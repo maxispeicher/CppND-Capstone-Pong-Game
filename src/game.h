@@ -5,8 +5,7 @@
 #include "SDL.h"
 #include "controller.h"
 #include "renderer.h"
-#include "snake.h"
-#include "puk.h"
+#include "pong_state.h"
 
 class Game {
  public:
@@ -14,12 +13,10 @@ class Game {
   void Run(Controller const &controller, Renderer &renderer,
            std::size_t target_frame_duration);
   int GetScore() const;
-  int GetSize() const;
 
  private:
-  Snake snake;
   SDL_Point food;
-  Puk _puk;
+  PongState _pong_state;
 
   std::random_device dev;
   std::mt19937 engine;
@@ -28,7 +25,6 @@ class Game {
 
   int score{0};
 
-  void PlaceFood();
   void Update();
 };
 

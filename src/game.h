@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <random>
+#include <string>
 #include "SDL.h"
 #include "controller.h"
 #include "renderer.h"
@@ -12,7 +13,7 @@ class Game {
   Game(std::size_t grid_width, std::size_t grid_height);
   void Run(Controller const &controller, Renderer &renderer,
            std::size_t target_frame_duration);
-  int GetScore() const;
+  std::string GetScore() const;
 
  private:
   SDL_Point food;

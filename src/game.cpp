@@ -5,7 +5,7 @@
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : engine(dev()), random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)),
-      _pong_state(PongState(grid_width, grid_height, 5)) {}
+      _pong_state(PongState(grid_width, grid_height, 9)) {}
 
 void Game::Run(Controller const &controller, Renderer &renderer,
                std::size_t target_frame_duration) {
@@ -33,7 +33,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // After every second, update the window title.
     if (frame_end - title_timestamp >= 1000) {
-      renderer.UpdateWindowTitle(score, frame_count);
+      renderer.UpdateWindowTitle(_pong_state.get_score(), frame_count);
       frame_count = 0;
       title_timestamp = frame_end;
     }
@@ -49,4 +49,4 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
 void Game::Update() { _pong_state.update(); }
 
-int Game::GetScore() const { return score; }
+std::string Game::GetScore() const { return _pong_state.get_score(); }

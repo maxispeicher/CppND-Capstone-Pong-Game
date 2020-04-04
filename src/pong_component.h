@@ -1,10 +1,13 @@
 #ifndef PONG_COMPONENT_H
 #define PONG_COMPONENT_H
 
+#include <iostream>
 class PongComponent
 {
 public:
-    virtual void update() = 0;
+    virtual void update() {
+        std::cout << "PongComponent updated!" << std::endl;
+    };
 protected:
     PongComponent(int grid_width, int grid_height):
     _grid_width(grid_width), _grid_height(grid_height) {}

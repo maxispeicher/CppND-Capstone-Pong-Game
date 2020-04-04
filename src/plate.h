@@ -3,7 +3,7 @@
 
 #include "pong_component.h"
 
-class Plate : PongComponent {
+class Plate : public PongComponent {
 public:
   enum class PlateDirection { kUp, kDown, kNeutral };
   Plate(int grid_width, int grid_height, int plate_size)
@@ -13,7 +13,7 @@ public:
   int plate_size;
   float y_pos;
   PlateDirection direction{PlateDirection::kNeutral};
-  float speed{0.4f};
+  float speed{1.0f};
   void update();
 };
 

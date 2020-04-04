@@ -12,7 +12,7 @@ class Renderer {
   ~Renderer();
 
   void Render(PongState const pong_state);
-  void UpdateWindowTitle(int score, int fps);
+  void UpdateWindowTitle(std::string score, int fps);
 
  private:
   SDL_Window *sdl_window;

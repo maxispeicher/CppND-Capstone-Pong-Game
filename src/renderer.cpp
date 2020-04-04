@@ -47,18 +47,18 @@ void Renderer::Render(PongState const pong_state) {
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
 
-  block.x = static_cast<int>(pong_state.puk_x_pos) * block.w;
-  block.y = static_cast<int>(pong_state.puk_y_pos) * block.h;
+  block.x = static_cast<int>(pong_state.puk.x_pos) * block.w;
+  block.y = static_cast<int>(pong_state.puk.y_pos) * block.h;
   SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0xFF, 0x00, 0xFF);
   SDL_RenderFillRect(sdl_renderer, &block);
 
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
-  for (int i=0; i<pong_state.plate_size; i++) {
+  for (int i=0; i<pong_state.player_plate.plate_size; i++) {
     block.x = 0;
-    block.y = static_cast<int>(pong_state.player_y_pos - pong_state.plate_size/2 + i) * block.h;
+    block.y = static_cast<int>(pong_state.player_plate.y_pos - pong_state.player_plate.plate_size/2 + i) * block.h;
     SDL_RenderFillRect(sdl_renderer, &block);
     block.x = (grid_width - 1) * block.w;
-    block.y = static_cast<int>(pong_state.ai_y_pos - pong_state.plate_size/2 + i) * block.h;
+    block.y = static_cast<int>(pong_state.ai_y_pos - pong_state.player_plate.plate_size/2 + i) * block.h;
     SDL_RenderFillRect(sdl_renderer, &block);
   }
 

@@ -1,12 +1,9 @@
-# CPPND: Capstone Snake Game Example
+# CPPND: Capstone Pong Game
 
-This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+This repository contains the code for the Capstone Project of the Udacity C++ Nanodegree. The code is based on the code in [this repository](https://github.com/udacity/CppND-Capstone-Snake-Game).
 
-<img src="snake_game.gif"/>
-
-The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
-
-In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
+## Description
+The code builds a Pong Game based on the original Pong Game. You can play by pressing the keys `up` and `down` for moving your "character" at the left side. The current score of the match is displayed in the title bar of the window.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -29,3 +26,27 @@ In this project, you can build your own C++ application or extend this Snake gam
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
+
+## File and class structure
+All source code files are located in the `src` directory.
+
+The entrypoint for the game is in the file `main.cpp`. It creates the 3 major components of the game:
+ - Controller (`controller.h` and `controller.cpp`)
+ - Renderer (`renderer.h` and `renderer.cpp`)
+ - Game (`game.h` and `game.cpp`)
+
+ The Game class creates an instance of the class `PongState` which includes all necessary information about the game state. These state variables are located in multiple classes (`Puk`, `Plate` and `AiPlate`) which are all based on the base class `PongComponent`.
+
+ ## Project rubrics
+ The project fulfills the following rubric points:
+  - The project demonstrates an understanding of C++ functions and control structures. 
+  --> Functions and control loops are used in all classes (`*.cpp` files) 
+  - The project accepts user input and processes the input. --> The project accepts up and down input for moving the "character". See `controller.cpp`
+  - The project uses Object Oriented Programming techniques. --> The complete source code is organized in classes. 
+  - Classes use appropriate access specifiers for class members. --> All class members have access specifiers.
+  - Class constructors utilize member initialization lists. --> All class constructors use initialization lists for initializing members.
+  - Classes abstract implementation details from their interfaces. --> Functionality of game components is abstracted (e.g. `update()` function of all `PongComponent`s)
+  - Classes encapsulate behavior. --> Classes reflect the parts of Pong (e.g. `Puk`, `Plate` and `AiPlate`)
+  - Classes follow an appropriate inheritance hierarchy. --> `PongState`, `Puk` and `Plate` classes are based on `PongComponent`. `AiPlate` is based on `Plate`.
+  - Derived class functions override virtual base class functions. --> `PongState` overrides the `update()` function of the base class `PongComponent`.
+  - The project makes use of references in function declarations. --> The `update()` function of the classes `Puk` and `AiPlate` uses references. 

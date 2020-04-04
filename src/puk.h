@@ -19,7 +19,7 @@ public:
         _random_y_proportion(0.1, 0.6), _last_update(_clock::now()) {}
 
   void update(Plate &player_plate, AiPlate &ai_plate, PongState &pong_state);
-  float speed{1.2f};
+  float speed{1.4f};
   int positive_x_direction{1};
   float y_speed_proportion{0};
   float x_pos;

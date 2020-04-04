@@ -7,11 +7,9 @@
 void Puk::update(Plate &player_plate, AiPlate &ai_plate,
                  PongState &pong_state) {
   if (pause_duration > 0) {
-    std::cout << "Pause before: " << pause_duration << std::endl;
     pause_duration -=
         std::chrono::duration_cast<_milliseconds>(_clock::now() - _last_update)
             .count();
-    std::cout << "Pause after: " << pause_duration << std::endl;
   } else {
     pause_duration = 0;
     x_pos += speed * (1 - abs(y_speed_proportion)) * positive_x_direction;

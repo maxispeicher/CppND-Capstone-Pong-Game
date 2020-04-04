@@ -12,7 +12,7 @@ public:
   AiPlate(int grid_width, int grid_height, int plate_size)
       : Plate(grid_width, grid_height, plate_size),
         _random_engine((std::random_device())()),
-        _random_offset(-1.5 * plate_size, 1.5 * plate_size) {}
+        _random_offset(-2 * plate_size, 2 * plate_size) {}
 
   void update(Puk const &puk);
 

@@ -13,7 +13,7 @@ public:
   int plate_size;
   float y_pos;
   PlateDirection direction{PlateDirection::kNeutral};
-  float speed{1.0f};
+  float speed{1.2f};
   void update();
 };
 
